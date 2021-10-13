@@ -1,18 +1,29 @@
 import './book.list.css'
 
 import { useEffect } from 'react';
-import BookListItem from '../book-list-item';
 import { connect } from 'react-redux';
+import withBookstoreService from '../hoc';
+import compose from '../../utils';
+import { booksLoaded } from '../../actions';
+import BookListItem from '../book-list-item';
+import Spinner from '../spinner';
 
 
-const BookList = ({books}) => {
+const BookList = ({books, bookstoreService, booksLoaded, loading}) => {
 
 	useEffect(() => {
-		console.log('useefect: load books')
+		bookstoreService.getBooks()
+			.then((data) => {
+				booksLoaded(data)
+			})
 	}, [])
 
+	if(loading) {
+		return <Spinner />
+	}
+
 	return (
-		<ul>
+		<ul className='book-list'>
 			{
 				books.map((book) => {
 					return (
@@ -28,8 +39,16 @@ const BookList = ({books}) => {
 
 const mapStateToProps = (state) => {
 	return {
-		books: state.books
+		books: state.books,
+		loading: state.loading
 	}
 }
 
-export default connect(mapStateToProps)(BookList)
+const mapDispatchToProps = {
+	booksLoaded
+}
+
+export default compose(
+	withBookstoreService(),
+	connect(mapStateToProps, mapDispatchToProps)
+)(BookList)

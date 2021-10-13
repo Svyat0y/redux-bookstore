@@ -7,6 +7,8 @@ import { bookstoreService } from './services';
 import store from './store'
 import App from './components/app'
 
+import './assets/fontAwesomeIcons'
+
 
 ReactDOM.render(
 	<Provider store={store}>
