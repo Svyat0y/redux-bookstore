@@ -11,15 +11,15 @@ const App = () => {
 			<ShopHeader numItems={5} total={160} />
 			<Switch>
 				<Route
-					exact path={'/'}
+					exact path='/'
 					render={HomePage}
 				/>
 				<Route
-					path={'/cart'}
+					path='/cart'
 					component={CartPage}
 				/>
 				<Route
-					path={'*'}
+					path='*'
 					render={() => 'not found'}/>
 			</Switch>
 		</main>
