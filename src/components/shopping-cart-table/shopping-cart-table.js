@@ -1,6 +1,7 @@
 import './shopping-cart-table.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { connect } from 'react-redux';
+import { allBooksRemovedFromCart, bookAddedToCart, bookRemovedFromCart } from '../../actions';
 
 
 const ShoppingCartTable = ({ items, orderTotal, onDecrease, onIncrease, onDelete }) => {
@@ -60,12 +61,10 @@ const mapStateToProps = (state) => {
 	}
 }
 
-const mapDispatchToProps = () => {
-	return {
-		onIncrease: (id) => console.log('increase', id),
-		onDecrease: (id) => console.log('decrease', id),
-		onDelete: (id) => console.log('delete', id)
-	}
+const mapDispatchToProps = {
+	onIncrease: bookAddedToCart,
+	onDecrease: bookRemovedFromCart,
+	onDelete: allBooksRemovedFromCart
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShoppingCartTable)
