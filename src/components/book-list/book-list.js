@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import withBookstoreService from '../hoc';
 import compose from '../../utils';
-import { bookAddedToCart, fetchBooks, onBookAdded } from '../../actions';
+import { bookAddedToCart, fetchBooks } from '../../actions';
 import BookListItem from '../book-list-item';
 import Spinner from '../spinner';
 import ErrorIndicator from '../error-indicator';
@@ -45,12 +45,8 @@ const BookListContainer = ({ fetchBooks, books, error, loading, onAddedToCart })
 	)
 }
 
-const mapStateToProps = (state) => {
-	return {
-		books: state.books,
-		loading: state.loading,
-		error: state.error
-	}
+const mapStateToProps = ({ bookList: { books, loading, error } }) => {
+	return { books, loading, error }
 }
 
 const mapDispatchToProps = (dispatch, { bookstoreService }) => {

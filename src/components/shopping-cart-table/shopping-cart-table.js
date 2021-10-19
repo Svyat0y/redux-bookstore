@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { allBooksRemovedFromCart, bookAddedToCart, bookRemovedFromCart } from '../../actions';
 
 
-const ShoppingCartTable = ({ items, orderTotal, onDecrease, onIncrease, onDelete }) => {
+const ShoppingCartTable = ({ cartItems, orderTotal, onDecrease, onIncrease, onDelete }) => {
 
 	const renderRow = (item, idx) => {
 		const { id, title, count, total } = item
@@ -43,7 +43,7 @@ const ShoppingCartTable = ({ items, orderTotal, onDecrease, onIncrease, onDelete
 				</tr>
 				</thead>
 				<tbody>
-				{ items.map(renderRow) }
+				{ cartItems.map(renderRow) }
 				</tbody>
 			</table>
 
@@ -54,11 +54,8 @@ const ShoppingCartTable = ({ items, orderTotal, onDecrease, onIncrease, onDelete
 	)
 }
 
-const mapStateToProps = (state) => {
-	return {
-		items: state.cartItems,
-		orderTotal: state.orderTotal
-	}
+const mapStateToProps = ({ shoppingCart: { cartItems, orderTotal } }) => {
+	return { cartItems, orderTotal }
 }
 
 const mapDispatchToProps = {
