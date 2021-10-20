@@ -12,7 +12,7 @@ const updateCartItem = (book, item = {}, quantity) => {
 		id,
 		title,
 		count: count + quantity,
-		total: total + quantity * book.price
+		total: total + quantity * book.price,
 	}
 }
 
@@ -49,7 +49,7 @@ const updateOrder = (state, bookId, quantity) => {
 
 	return {
 		orderTotal: 0,
-		cartItems: updateCartItems(cartItems, newItem, itemIndex)
+		cartItems: updateCartItems(cartItems, newItem, itemIndex),
 	}
 }
 

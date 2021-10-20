@@ -46,3 +46,9 @@ export const allBooksRemovedFromCart = (bookId) => {
 		payload: bookId
 	}
 }
+
+export const getTotalOrdersInCart = () => {
+	return {
+		type: 'TOTAL_ORDERS_IN_CART'
+	}
+}

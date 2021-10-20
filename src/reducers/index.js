@@ -1,8 +1,8 @@
 import updateBookList from './bookList';
 import updateShoppingCart from './shoppingCart';
+import updateShoppingHeader from './shoppingHeader';
 
 const reducer = (state, action) => {
-	console.log(state)
 
 	// case 'FETCH_BOOKS_REQUEST':
 	// 	return {
@@ -40,7 +40,8 @@ const reducer = (state, action) => {
 
 	return {
 		bookList: updateBookList(state, action),
-		shoppingCart: updateShoppingCart(state, action)
+		shoppingCart: updateShoppingCart(state, action),
+		totalOrdersInCart: updateShoppingHeader(state, action)
 	}
 }
 
