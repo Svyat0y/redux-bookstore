@@ -2,8 +2,8 @@ import './error-indicator.css'
 
 
 const ErrorIndicator = ({ error }) => {
-
 	console.log(error)
+
 	return <div>Error!</div>
 }
 

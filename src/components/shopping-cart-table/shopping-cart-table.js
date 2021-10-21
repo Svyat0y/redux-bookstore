@@ -1,10 +1,11 @@
 import './shopping-cart-table.css'
+import { connect } from 'react-redux'
+
+import { allBooksRemovedFromCart, bookAddedToCart, bookRemovedFromCart } from '../../actions'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { connect } from 'react-redux';
-import { allBooksRemovedFromCart, bookAddedToCart, bookRemovedFromCart } from '../../actions';
 
 
-const ShoppingCartTable = ({ cartItems, orderTotal, onDecrease, onIncrease, onDelete }) => {
+const ShoppingCartTable = ({ cartItems, onDecrease, onIncrease, onDelete }) => {
 
 	const renderRow = (item, idx) => {
 		const { id, title, count, total } = item
@@ -46,16 +47,12 @@ const ShoppingCartTable = ({ cartItems, orderTotal, onDecrease, onIncrease, onDe
 				{ cartItems.map(renderRow) }
 				</tbody>
 			</table>
-
-			<div className="total">
-				Total: ${ orderTotal }
-			</div>
 		</div>
 	)
 }
 
-const mapStateToProps = ({ shoppingCart: { cartItems, orderTotal } }) => {
-	return { cartItems, orderTotal }
+const mapStateToProps = ({ shoppingCart: { cartItems } }) => {
+	return { cartItems }
 }
 
 const mapDispatchToProps = {

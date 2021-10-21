@@ -1,6 +1,6 @@
-import updateBookList from './bookList';
-import updateShoppingCart from './shoppingCart';
-import updateShoppingHeader from './shoppingHeader';
+import updateBookList from './bookList'
+import updateShoppingCart from './shoppingCart'
+import updateShoppingHeader from './shoppingHeader'
 
 const reducer = (state, action) => {
 
@@ -41,7 +41,7 @@ const reducer = (state, action) => {
 	return {
 		bookList: updateBookList(state, action),
 		shoppingCart: updateShoppingCart(state, action),
-		totalOrdersInCart: updateShoppingHeader(state, action)
+		headerCart: updateShoppingHeader(state, action)
 	}
 }
 

@@ -1,7 +1,8 @@
+import { Route, Switch } from 'react-router-dom'
+
 import withBookstoreService from '../hoc'
-import { Route, Switch } from 'react-router-dom';
-import { CartPage, HomePage } from '../pages';
-import ShopHeader from '../shop-header';
+import ShopHeader from '../shop-header'
+import { CartPage, HomePage } from '../pages'
 
 
 const App = () => {

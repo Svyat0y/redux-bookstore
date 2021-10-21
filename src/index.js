@@ -1,21 +1,23 @@
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { BrowserRouter as Router } from 'react-router-dom'
-import ErrorBoundry from './components/error-boundry'
+
 import { BookstoreServiceProvider } from './components/bookstore-service-context'
-import { bookstoreService } from './services';
+import { bookstoreService } from './services'
 import store from './store'
+
 import App from './components/app'
+import ErrorBoundry from './components/error-boundry'
 
 import './assets/fontAwesomeIcons'
 
 
 ReactDOM.render(
-	<Provider store={store}>
+	<Provider store={ store }>
 		<ErrorBoundry>
-			<BookstoreServiceProvider value={bookstoreService}>
+			<BookstoreServiceProvider value={ bookstoreService }>
 				<Router>
-					<App />
+					<App/>
 				</Router>
 			</BookstoreServiceProvider>
 		</ErrorBoundry>

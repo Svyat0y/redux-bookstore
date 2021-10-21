@@ -1,16 +1,17 @@
 import './shop-header.css'
+import { connect } from 'react-redux'
+import { NavLink } from 'react-router-dom'
+import { useEffect } from 'react'
 
+import { getOrderTotal, getTotalOrdersInCart } from '../../actions'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { NavLink } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { getTotalOrdersInCart } from '../../actions';
-import { useEffect } from 'react';
 
 
-const ShopHeader = ({ totalOrdersInCart, getTotalOrdersInCart, cartItems }) => {
+const ShopHeader = ({ totalOrdersInCart, getTotalOrdersInCart, orderTotal, cartItems, getOrderTotal }) => {
 
 	useEffect(() => {
-		getTotalOrdersInCart();
+		getTotalOrdersInCart()
+		getOrderTotal()
 	}, [ cartItems ])
 
 	return (
@@ -21,7 +22,7 @@ const ShopHeader = ({ totalOrdersInCart, getTotalOrdersInCart, cartItems }) => {
 			<div className='shopping-cart'>
 				<NavLink to='/cart'>
 					<FontAwesomeIcon className='cart-icon' icon='shopping-cart'/>
-					{ totalOrdersInCart } items (${ 52 })
+					{ totalOrdersInCart } items (${ orderTotal })
 				</NavLink>
 			</div>
 		</header>
@@ -30,13 +31,15 @@ const ShopHeader = ({ totalOrdersInCart, getTotalOrdersInCart, cartItems }) => {
 
 const mapStateToProps = (state) => {
 	return {
-		totalOrdersInCart: state.totalOrdersInCart,
-		cartItems: state.shoppingCart.cartItems
+		totalOrdersInCart: state.headerCart.totalOrdersInCart,
+		cartItems: state.shoppingCart.cartItems,
+		orderTotal: state.headerCart.orderTotal
 	}
 }
 
 const mapDispatchToProps = {
-	getTotalOrdersInCart
+	getTotalOrdersInCart,
+	getOrderTotal
 }
 
 
