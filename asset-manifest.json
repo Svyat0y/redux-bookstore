@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/redux-bookstore/static/css/main.d2da7aaf.chunk.css",
+    "main.js": "/redux-bookstore/static/js/main.6c9ed964.chunk.js",
+    "main.js.map": "/redux-bookstore/static/js/main.6c9ed964.chunk.js.map",
+    "runtime-main.js": "/redux-bookstore/static/js/runtime-main.57c7d6d1.js",
+    "runtime-main.js.map": "/redux-bookstore/static/js/runtime-main.57c7d6d1.js.map",
+    "static/js/2.9d43cf66.chunk.js": "/redux-bookstore/static/js/2.9d43cf66.chunk.js",
+    "static/js/2.9d43cf66.chunk.js.map": "/redux-bookstore/static/js/2.9d43cf66.chunk.js.map",
+    "index.html": "/redux-bookstore/index.html",
+    "static/css/main.d2da7aaf.chunk.css.map": "/redux-bookstore/static/css/main.d2da7aaf.chunk.css.map",
+    "static/js/2.9d43cf66.chunk.js.LICENSE.txt": "/redux-bookstore/static/js/2.9d43cf66.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.57c7d6d1.js",
+    "static/js/2.9d43cf66.chunk.js",
+    "static/css/main.d2da7aaf.chunk.css",
+    "static/js/main.6c9ed964.chunk.js"
+  ]
+}
