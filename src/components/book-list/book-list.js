@@ -1,9 +1,9 @@
 import './book.list.css'
-import { useEffect } from 'react'
+import React, { Component, useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import compose from '../../utils'
-import { bookAddedToCart, fetchBooks } from '../../actions'
+import { bookAddedToCart, cleanAllBooks, fetchBooks } from '../../actions'
 import withBookstoreService from '../hoc'
 import BookListItem from '../book-list-item'
 import Spinner from '../spinner';
@@ -26,24 +26,46 @@ const BookList = ({ books, onAddedToCart }) => {
 	)
 }
 
-const BookListContainer = ({ fetchBooks, books, error, loading, onAddedToCart }) => {
+class BookListContainer extends Component {
 
-	useEffect(() => {
-		fetchBooks()
-	}, [])
-
-	if (loading) {
-		return <Spinner/>
+	componentDidMount() {
+		this.props.fetchBooks();
 	}
 
-	if (error) {
-		return <ErrorIndicator/>
-	}
+	render() {
+		const { books, loading, error, onAddedToCart } = this.props;
 
-	return (
-		<BookList books={ books } onAddedToCart={ onAddedToCart }/>
-	)
+		if (loading) {
+			return <Spinner/>;
+		}
+
+		if (error) {
+			return <ErrorIndicator/>;
+		}
+
+		return <BookList books={ books } onAddedToCart={ onAddedToCart }/>;
+	}
 }
+
+// on react hooks but without componentWillUnmount
+// const BookListContainer = ({ fetchBooks, books, error, loading, onAddedToCart }) => {
+//
+// 	useEffect(() => {
+// 		fetchBooks()
+// 	}, [])
+//
+// 	if (loading) {
+// 		return <Spinner/>
+// 	}
+//
+// 	if (error) {
+// 		return <ErrorIndicator/>
+// 	}
+//
+// 	return (
+// 		<BookList books={ books } onAddedToCart={ onAddedToCart }/>
+// 	)
+// }
 
 const mapStateToProps = ({ bookList: { books, loading, error } }) => {
 	return { books, loading, error }
